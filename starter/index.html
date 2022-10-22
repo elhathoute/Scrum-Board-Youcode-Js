@@ -157,7 +157,7 @@
     <div class="modal fade" id="AddTask" tabindex="-1" aria-labelledby="task" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header ">
+                <div class="modal-header bg-gray ">
 
                     <h4 class="modal-title" id="task">Add task</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -217,9 +217,8 @@
 
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                   
+                <div class="modal-footer d-flex justify-content-center bg-gray">
+                    <button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
                     <button id="SaveTask" type="submit" class="btn btn-primary">Save</button>
 
                 </div>
@@ -233,8 +232,8 @@
     <!-- Modal content Update goes here -->
     <div class="modal fade" id="UpdateTask" tabindex="-1" aria-labelledby="task" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header ">
+            <div class="modal-content ">
+                <div class="modal-header bg-gray">
 
                     <h4 class="modal-title" id="task">Update task</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -295,13 +294,14 @@
                         </div>
 
 
-
+                     
 
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                <div class="modal-footer justify-content-center bg-gray">
+                    <button type="button" class="btn btn-white" data-bs-dismiss="modal" id="close">Close</button>
                      <button id="updateTask" type="button" class="btn btn-success" onClick="location.replace(self.location.href)" >update</button> 
-                     <button id="deleteTask"  type="button" class="btn btn-danger" onClick="location.replace(self.location.href)" >delete</button>
+                     <button id="deleteTask"  type="button" class="btn btn-danger"  onclick="deleteConfirmation()">delete</button>
+                     
 
                 </div>
                 </form>

@@ -1,4 +1,4 @@
-//localStorage.clear()
+// localStorage.clear()
 var todo = document.getElementById("TodoTask");
 var inProgress = document.getElementById("in-Progress ");
 var done = document.getElementById("done-task");
@@ -24,11 +24,10 @@ form.addEventListener("submit", () => {
     localStorage.setItem('tableOfTaskS', JSON.stringify(tableOfTaskS));
     affichage();
 })
-
 function affichage() {
     //initialiser les div a la valeur vide au debut 
-    todo.innerHTML = '',inProgress.innerHTML = '',todo.innerHTML = '';
-    let countTodo = 1,countProg = 1,countDone = 1;
+    todo.innerHTML = '', inProgress.innerHTML = '', done.innerHTML = '';
+    let countTodo = 1, countProg = 1, countDone = 1;
     for (let i = 0; i < tableOfTaskS.length; i++) {
         //condition of priority
         (tableOfTaskS[i].priority == 1) ? priority = "Urgent" : (tableOfTaskS[i].priority == 2) ? priority = "Hight" : (tableOfTaskS[i].priority == 3) ? priority = "Medium" : priority = "Low";
@@ -36,13 +35,13 @@ function affichage() {
         (tableOfTaskS[i].type == 1) ? type = "Feature" : type = "Bug";
         //condition of description
         let descrLenght = tableOfTaskS[i].description.length;
-        (descrLenght > 30) ? description = tableOfTaskS[i].description.substr(0, 40) :description = tableOfTaskS[i].description;
-        if (tableOfTaskS[i].status == 1) {
-            todo.innerHTML += `
+        (descrLenght > 30) ? description = tableOfTaskS[i].description.substr(0, 40) : description = tableOfTaskS[i].description;
+
+        let button = `
                      <div >
                                 <button onclick="updateTask(this)" data-bs-toggle="modal" data-bs-target="#UpdateTask" class="d-flex button w-100 border p-1 " id="btn-1">
                                     <div class="col-md-1">
-                                        <i class="bi bi-question-circle text-success"></i>
+                                     <i class="fa `+((tableOfTaskS[i].status == 1)?"fa-question":((tableOfTaskS[i].status == 2)?"fa-calendar":"fa-check"))+` text-success"></i>
                                     </div>
                                     <div class="col-md-11 text-start">
                                         <div class=" fw-bold">${tableOfTaskS[i].titre}</div>
@@ -59,62 +58,16 @@ function affichage() {
                                     </div>
                                 </button>               
                      </div>   `;
+        if (tableOfTaskS[i].status == 1) {
+            todo.innerHTML += button;
             spanToDo.innerHTML = countTodo++;
-
-        } else if (tableOfTaskS[i].status == 2) {
-            inProgress.innerHTML += `
-                    <div >
-                        <button onclick="updateTask(this)" data-bs-toggle="modal" data-bs-target="#UpdateTask"  class="d-flex button w-100 border p-1 " id="btn-1">
-                            <div class="col-md-1">
-                                <i class="bi bi-question-circle text-success"></i>
-                            </div>
-                            <div class="col-md-11 text-start">
-                                <div class=" fw-bold">${tableOfTaskS[i].titre}</div>
-                                <div class=" ">
-                                    <div class="text-black-50 "># <span>${i + 1} </span> created in ${tableOfTaskS[i].date} </div>
-                                    <div class=" " title=${tableOfTaskS[i].description}> ${description}...</div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center ">
-                                    <div>
-                                        <span class="col-md-auto btn btn-primary rounded-bottom rounded-top ">${priority} </span>
-                                        <span class=" col-md-auto btn btn-gray  ">${type} </span>
-                                    </div> 
-                                </div>
-                            </div>
-                        </button>                  
-                    </div> `;
+        }
+        else if (tableOfTaskS[i].status == 2) {
+            inProgress.innerHTML += button;
             spanInProgress.innerHTML = countProg++;
-
-        } else if (tableOfTaskS[i].status == 3) {
-            done.innerHTML += `
-                    <div >
-                        <button onclick="updateTask(this)" data-bs-toggle="modal" data-bs-target="#UpdateTask"  class="d-flex button w-100 border p-1 " id="btn-1">
-                            <div class="col-md-1">
-                                <i class="bi bi-question-circle text-success"></i>
-                            </div>
-                            <div class="col-md-11 text-start">
-                                <div class=" fw-bold">${tableOfTaskS[i].titre}</div>
-                                <div class=" ">
-                                    <div class="text-black-50  "># <span>${i + 1} </span> created in ${tableOfTaskS[i].date} </div>
-                                    <div class=" " title=${tableOfTaskS[i].description}>${description}...</div>
-                        
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center ">
-                                    <div>
-                                        <span class="col-md-auto btn btn-primary rounded-bottom rounded-top ">${priority} </span>
-                                        <span class=" col-md-auto btn btn-gray  ">${type} </span>
-                                    </div> 
-                                </div>
-                
-                
-                            </div>
-                        </button>
-                                    
-                    </div>
-            
-                    `;
+        } else {
+            done.innerHTML += button;
             spanDone.innerHTML = countDone++;
-
         }
     }
 }
@@ -122,17 +75,19 @@ function affichage() {
 addTask.addEventListener("click", () => {
     addTask.setAttribute("data-bs-dismiss", "modal");
 })
-
 //delete task
-document.getElementById("deleteTask").addEventListener("click", () => {
-    //get the id of task
-    let id = document.getElementById("id1").value;
-    //remove the task
-    tableOfTaskS.splice(id, 1);
-    //set tableOfTaskS in localstorage
-    tableOfTaskS = localStorage.setItem('tableOfTaskS', JSON.stringify(tableOfTaskS));
-})
-
+function deleteConfirmation(){
+    let result = confirm("Are you sure to delete this task?");
+    if(result){
+            //get the id of task
+            let id = document.getElementById("id1").value;
+            //remove the task
+            tableOfTaskS.splice(id, 1);
+            //set tableOfTaskS in localstorage
+            tableOfTaskS = localStorage.setItem('tableOfTaskS', JSON.stringify(tableOfTaskS));     
+    }
+    location.replace(self.location.href)
+}
 function updateTask(update) {
     //input of id hidden
     document.getElementById('id1').style.visibility = 'hidden';
