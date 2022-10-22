@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>YouCode | Scrum Board </title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+
+    <!-- ================== BEGIN core-css ================== -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="assets/css/default/app.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- ================== END core-css ================== -->
+</head>
+
+<body>
+
+
+
+    <!-- BEGIN #app -->
+    <div id="app " class="app-without-sidebar ">
+
+        <!-- BEGIN #content -->
+        <div id="content " class="app-content main-style ">
+            <div class="d-flex  justify-content-between align-items-center ">
+                <div id="breadcrumb-h1" class="breadcrumb-h1 ">
+
+                    <ol class="breadcrumb ">
+                        <li class="breadcrumb-item "><a href="javascript:; ">Home</a></li>
+                        <li class="breadcrumb-item active " aria-current="location ">Scrum Board </li>
+                    </ol>
+                    <!-- BEGIN page-header -->
+                    <h1 class="page-header ">
+                        Scrum Board
+                    </h1>
+                    <!-- END page-header -->
+                </div>
+                
+                <div class="d-flex align-items-center ">
+                    <button type="button" class="btn btn-info rounded-pill " data-bs-toggle="modal" data-bs-target="#AddTask" id="addTaskBtn"><i class="bi bi-plus  "></i>  Add Task</a>
+						
+    </div>
+    </div>
+
+    <div class="row " id="row">
+        <div class="col-lg-4  col-md-6 col-sm-12 col-xs-12 " >
+            <div class="card" id="card">
+                <div class="card-header p-2 bg-dark rounded-top ">
+                    <h4 class="text-white  ">To do (<span id="to-do-tasks-count">0</span>)</h4>
+
+                </div>
+                <div class="" id="TodoTask">
+                    <!-- TO DO TASKS HERE -->
+                   
+							
+<!--                    
+                    <button class="d-flex button w-100 border p-1 ">
+								<div class=" col-md-1 ">
+									<i class=" bi bi-question-circle text-success"></i> 
+								</div>
+								<div class=" col-md-11 text-start">
+									<div class=" fw-bold">Annotate</div>
+									<div class=" ">
+										<div class=" text-black-50">#4 created in 2022-10-08</div>
+										<div class=" " title="The mockup provided can sometimes be confusing for developers. Especially if it contains much more content than the scope of the task described. Drop a couple of arrows, outlines and annotations here and there to emphasize
+            what are the important parts of the mockup from the task requirements perspective. ">The mockup provided can sometimes be confusing for deve...</div>
+									</div>
+									<div class=" ">
+										<span class=" col-md-auto btn btn-primary rounded-bottom rounded-top ">High</span>
+										<span class="col-md-auto btn btn-gray ">Feature</span>
+									</div>
+								</div>
+							</button> -->
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class="card ">
+                <div class="card-header p-2 bg-dark rounded-top ">
+                    <h4 class=" text-white">In Progress (<span id="in-progress-tasks-count">0</span>)</h4>
+
+                </div>
+                <div class=" " id="in-Progress ">
+                    <!-- IN PROGRESS TASKS HERE -->
+
+
+                    <!-- <button class="d-flex button w-100 border p-1 ">
+								<div class=" col-md-1 ">
+									<i class="bx bx-loader-alt text-success "></i> 
+								</div>
+								<div class=" col-md-11 text-start ">
+									<div class="fw-bold  ">Provide a link to an exception and/or a stack trace</div>
+									<div class=" ">
+										<div class=" text-black-50">#9 created in 2022-10-08</div>
+										<div class=" " title="as investigating those is usually the first step to take in resolving the problem. ">as investigating those is usually the first step to tak...</div>
+									</div>
+									<div class=" ">
+										<span class=" col-md-auto btn btn-primary rounded-bottom rounded-top">High</span>
+										<span class=" col-md-auto btn btn-gray">Bug</span>
+									</div>
+								</div>
+							</button> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+            <div class=" card">
+                <div class=" card-header p-2 bg-dark rounded-top">
+                    <h4 class="text-white ">Done (<span id="done-tasks-count">0</span>)</h4>
+
+                </div>
+                <div class="" id="done-task">
+                    <!-- DONE TASKS HERE -->
+
+
+                    <!-- <button class="d-flex button w-100 border p-1 ">
+								<div class="col-md-1 ">
+									<i class="bi bi-check-circle text-success"></i>
+								</div>
+								<div class="col-md-11 text-start ">
+									<div class="fw-bold ">Provide contact information</div>
+									<div class=" ">
+										<div class=" text-black-50">#13 created in 2022-10-08</div>
+										<div class=" " title="of the person that reported the bug. This will not always be possible, but in some cases it might be advantageous and most effective if a developer can have a chat with a person that actually experienced the bug, especially
+            if the steps to reproduce a problem are not deterministic. ">of the person that reported the bug. This will not alwa...</div>
+									</div>
+									<div class=" ">
+										<span class=" col-md-auto btn btn-primary rounded-bottom rounded-top">High</span>
+										<span class="col-md-auto btn btn-gray ">Bug</span>
+									</div>
+								</div>
+							</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- END #content -->
+
+
+    <!-- BEGIN scroll-top-btn -->
+    <a href="javascript:; " class="btn btn-icon btn-circle btn-success btn-scroll-to-top " data-toggle="scroll-to-top "><i class="fa fa-angle-up "></i></a>
+    <!-- END scroll-top-btn -->
+    </div>
+    <!-- END #app -->
+
+    <!-- TASK MODAL -->
+
+    <!-- Modal content ADD goes here -->
+    <div class="modal fade" id="AddTask" tabindex="-1" aria-labelledby="task" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+
+                    <h4 class="modal-title" id="task">Add task</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="" id="form">
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="titre">Titre</label>
+                            <input type="text" id="titre" class="form-control" name="titre" required/>
+
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label ">Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radio1" value="1" checked>
+                                <label class="form-check-label" for="feature">
+								  Feature
+								</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio" id="radio2" value="2">
+                                <label class="form-check-label" for="bug">
+								  Bug
+								</label>
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="priority">Priority</label>
+                            <select class="form-select" id="priority" name="priority">
+								<option disabled selected>Please select</option>
+								<option id="p1"  value="1">Urgent</option>
+								<option id="p2"  value="2">High</option>
+								<option id="p3"  value="3">Medium</option>
+								<option  id="p4"  value="4">Low</option>
+							  </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="status">Status</label>
+                            <select class="form-select" id="status" name="status">
+								<option disabled selected>Please select</option>
+								<option id="s1" value="1">To do</option>
+								<option id="s2" value="2">In Progress</option>
+								<option id="s3" value="3">Done</option>
+							  </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="date">Date</label>
+                            <input type="date" id="date" class="form-control" />
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="description">Description</label>
+                            <textarea class="form-control" placeholder="" id="description" style="height: 100px"></textarea>
+                        </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                   
+                    <button id="SaveTask" type="submit" class="btn btn-primary">Save</button>
+
+                </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <!----------------------------->
+    <!-- Modal content Update goes here -->
+    <div class="modal fade" id="UpdateTask" tabindex="-1" aria-labelledby="task" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+
+                    <h4 class="modal-title" id="task">Update task</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="" id="form1">
+                        <div class="form-outline mb-2">
+                     <input type="text" id="id1" class="form-control" name="id" value="" readonly/>
+
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="titre1">Titre</label>
+                            <input type="text" id="titre1" class="form-control" name="titre1" required/>
+
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label ">Type</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio1" id="radio1-1" value="1" checked>
+                                <label class="form-check-label" for="feature">
+								  Feature
+								</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="radio1" id="radio2-1" value="2">
+                                <label class="form-check-label" for="bug">
+								  Bug
+								</label>
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="priority1">Priority</label>
+                            <select class="form-select" id="priority1" name="priority1">
+								<option disabled selected>Please select</option>
+								<option id="p1-1"  value="1">Urgent</option>
+								<option id="p2-1"  value="2">High</option>
+								<option id="p3-1"  value="3">Medium</option>
+								<option  id="p4-1"  value="4">Low</option>
+							  </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="status1">Status</label>
+                            <select class="form-select" id="status1" name="status1">
+								<option disabled selected>Please select</option>
+								<option id="s1-1" value="1">To do</option>
+								<option id="s2-1" value="2">In Progress</option>
+								<option id="s3-1" value="3">Done</option>
+							  </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="date1">Date</label>
+                            <input type="date" id="date1" class="form-control" />
+                        </div>
+                        <div class="form-outline mb-2">
+                            <label class="form-label" for="description1">Description</label>
+                            <textarea class="form-control" placeholder="" id="description1" style="height: 100px"></textarea>
+                        </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">Close</button>
+                     <button id="updateTask" type="button" class="btn btn-success" onClick="location.replace(self.location.href)" >update</button> 
+                     <button id="deleteTask"  type="button" class="btn btn-danger" onClick="location.replace(self.location.href)" >delete</button>
+
+                </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <!----------------------------->
+
+
+    <!-- ================== BEGIN core-js ================== -->
+    <script src="assets/js/vendor.min.js "></script>
+    <script src="assets/js/app.min.js "></script>
+    <script src="assets/js/main.js"></script>
+    
+    <!-- ================== END core-js ================== -->
+</body>
+
+
+</html>
