@@ -10,7 +10,6 @@ var form = document.getElementById("form");
 var form1 = document.getElementById("form1");
 //check if table exist in localstorage if trur return it if false return array vide
 var tableOfTaskS = localStorage.getItem('tableOfTaskS') ? JSON.parse(localStorage.getItem('tableOfTaskS')) : [];
-affichage();
 form.addEventListener("submit", () => {
     var TabTask = {
         titre: form.titre.value,
@@ -27,7 +26,8 @@ form.addEventListener("submit", () => {
 function affichage() {
     //initialiser les div a la valeur vide au debut 
     todo.innerHTML = '', inProgress.innerHTML = '', done.innerHTML = '';
-    let countTodo = 1, countProg = 1, countDone = 1;
+    let countTodo = 0, countProg = 0, countDone = 0;
+
     for (let i = 0; i < tableOfTaskS.length; i++) {
         //condition of priority
         (tableOfTaskS[i].priority == 1) ? priority = "Urgent" : (tableOfTaskS[i].priority == 2) ? priority = "Hight" : (tableOfTaskS[i].priority == 3) ? priority = "Medium" : priority = "Low";
@@ -41,7 +41,7 @@ function affichage() {
                      <div >
                                 <button onclick="updateTask(this)" data-bs-toggle="modal" data-bs-target="#UpdateTask" class="d-flex button w-100 border p-1 " id="btn-1">
                                     <div class="col-md-1">
-                                     <i class="fa `+((tableOfTaskS[i].status == 1)?"fa-question":((tableOfTaskS[i].status == 2)?"fa-calendar":"fa-check"))+` text-success"></i>
+                                     <i class="fa `+ ((tableOfTaskS[i].status == 1) ? "fa-question" : ((tableOfTaskS[i].status == 2) ? "fa-calendar" : "fa-check")) + ` text-success"></i>
                                     </div>
                                     <div class="col-md-11 text-start">
                                         <div class=" fw-bold">${tableOfTaskS[i].titre}</div>
@@ -60,31 +60,34 @@ function affichage() {
                      </div>   `;
         if (tableOfTaskS[i].status == 1) {
             todo.innerHTML += button;
-            spanToDo.innerHTML = countTodo++;
+            countTodo++;
         }
         else if (tableOfTaskS[i].status == 2) {
             inProgress.innerHTML += button;
-            spanInProgress.innerHTML = countProg++;
-        } else {
+            countProg++;
+        }  else if (tableOfTaskS[i].status == 3) {
             done.innerHTML += button;
-            spanDone.innerHTML = countDone++;
+            countDone++;
         }
     }
+    spanToDo.innerHTML = countTodo;
+    spanInProgress.innerHTML = countProg;
+    spanDone.innerHTML = countDone;
 }
 //hide modal after clicked in btn save of task
 addTask.addEventListener("click", () => {
     addTask.setAttribute("data-bs-dismiss", "modal");
 })
 //delete task
-function deleteConfirmation(){
+function deleteConfirmation() {
     let result = confirm("Are you sure to delete this task?");
-    if(result){
-            //get the id of task
-            let id = document.getElementById("id1").value;
-            //remove the task
-            tableOfTaskS.splice(id, 1);
-            //set tableOfTaskS in localstorage
-            tableOfTaskS = localStorage.setItem('tableOfTaskS', JSON.stringify(tableOfTaskS));     
+    if (result) {
+        //get the id of task
+        let id = document.getElementById("id1").value;
+        //remove the task
+        tableOfTaskS.splice(id, 1);
+        //set tableOfTaskS in localstorage
+        tableOfTaskS = localStorage.setItem('tableOfTaskS', JSON.stringify(tableOfTaskS));
     }
     location.replace(self.location.href)
 }
